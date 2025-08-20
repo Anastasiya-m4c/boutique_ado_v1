@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'allauth',  # Django Allauth for authentication
     'allauth.account',  # Django Allauth account management
     'allauth.socialaccount',  # Django Allauth social account management
+    'home',  
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,10 @@ ROOT_URLCONF = 'boutique_ado.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),  # Directory for custom templates
+            os.path.join(BASE_DIR, 'allauth', 'templates'),  # Directory for allauth templates
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
